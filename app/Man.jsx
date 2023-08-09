@@ -15,8 +15,8 @@ export function Model(props) {
   useFrame((_, delta) => {
     let speed = .5
     bool?movement += speed : movement -= speed
-    if(Math.abs(movement) >= 70) bool = !bool
-    nodes.mixamorig5LeftToe_End.rotation.x =(Math.PI / 180) * movement
+    if(Math.abs(movement) >= 50) bool = !bool
+    nodes.mixamorig5LeftArm.rotation.x =(Math.PI / 180) * movement
   })
   return (
     <group {...props} dispose={null} position={[0, -.4, 0]}>
