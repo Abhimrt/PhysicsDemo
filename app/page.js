@@ -1,17 +1,10 @@
 "use client"
-import { StrictMode, useEffect, useRef } from 'react'
+import { StrictMode, Suspense, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Reflector, useTexture } from '@react-three/drei'
+import { Html, OrbitControls, Reflector, useTexture } from '@react-three/drei'
 import { Model } from './Man'
 
 export default function Home() {
-  // const vid = useRef()
-  // useEffect(() => {
-  //   navigator.mediaDevices.getUserMedia({video:true}).then((stream) => {
-  //     vid.current.srcObject = stream;
-  //     vid.current.play();
-  //   })
-  // }, [])
   
 function Ground() {
   const [floor] = useTexture(['/SurfaceImperfections003_1K_var1.jpg'])
@@ -23,17 +16,15 @@ function Ground() {
 }
   return (
     <section className='bg-black'>
-      <StrictMode>
-        <Canvas camera={{ position: [0, 0, 1] } } id='canvas'>
-          {/* <mesh>
-            <boxGeometry  />
-            <meshBasicMaterial color={0x00ff00}   wireframe />
-          </mesh> */}
+      <StrictMode >
+        <Canvas camera={{ position: [0, .4, 1] } } id='canvas'>
+      <Suspense fallback={<Html><h1>Loading Please Wait</h1></Html>}>
           <Model/>
           <OrbitControls />
           <ambientLight intensity={1}/>
           <Ground/>
           <directionalLight intensity={.1} position={[0,1,.5]} ></directionalLight>
+      </Suspense>
         </Canvas>
 
       </StrictMode>

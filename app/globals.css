@@ -22,3 +22,7 @@ video{
   height: 100vh;
   z-index: 10;
 }
+h1{
+  font-size: larger;
+  z-index: 100;
+}
